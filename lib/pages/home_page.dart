@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(sessionManager.hashCode.toString());
     return Scaffold(
       appBar: AppBar(
         title: Text(sessionManager.user?.name ?? 'Not logged'),
