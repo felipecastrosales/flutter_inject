@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inject/injection/injection.dart';
 import 'package:flutter_inject/managers/session_manager.dart';
-import 'package:get_it/get_it.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -10,7 +10,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final sessionManager = GetIt.I.get<SessionManager>();
+  // final sessionManager = GetIt.I.get<SessionManager>();
+  final SessionManager sessionManager = getIt();
 
   @override
   Widget build(BuildContext context) {
