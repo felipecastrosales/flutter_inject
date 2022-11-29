@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inject/injection/injection.dart';
-import 'package:flutter_inject/managers/session_manager.dart';
-import 'package:flutter_inject/models/user.dart';
 
 import 'home_page.dart';
 
@@ -27,10 +24,7 @@ class _LoginPageState extends State<LoginPage> {
             // 2.
             // final SessionManager sessionManager = GetIt.I.get();
             // 3.
-            final SessionManager sessionManager = getIt();
-
-            debugPrint(sessionManager.hashCode.toString());
-            sessionManager.user = User('Felipe Sales');
+            // final SessionManager sessionManager = getIt();
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => const HomePage(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_inject/injection/injection.dart';
 import 'package:flutter_inject/managers/session_manager.dart';
 

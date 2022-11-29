@@ -11,8 +11,8 @@ void configureDependencies() {
   // final sessionManager = SessionManager();
   // debugPrint(sessionManager.hashCode.toString());
   // GetIt.I.registerSingleton<SessionManager>(sessionManager);
-  // GetIt.I.registerSingleton<SessionManager>(SessionManager());
+  GetIt.I.registerSingleton<SessionManager>(SessionManager());
   // GetIt.I.registerLazySingleton<SessionManager>(() => SessionManager());
-  getIt.registerFactory(() => SessionManager());
+  // getIt.registerFactory(() => SessionManager());
   debugPrint('Dependencies configured');
 }
