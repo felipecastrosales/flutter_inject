@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'injection/injection_get_it.dart';
+// import 'injection/injection_get_it.dart';
+import 'injection/injection_injectable.dart';
 import 'pages/login_page.dart';
 
-void main() {
-  configureDependencies();
+Future<void> main() async {
+  await configureDependencies();
   runApp(const MyApp());
 }
 
