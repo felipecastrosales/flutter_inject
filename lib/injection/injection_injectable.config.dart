@@ -5,15 +5,19 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i4;
+import 'package:dio/dio.dart' as _i5;
 import 'package:flutter_inject/datasources/auth_local_datasource.dart' as _i3;
-import 'package:flutter_inject/datasources/auth_remote_datasource.dart' as _i6;
+import 'package:flutter_inject/datasources/auth_remote_datasource.dart' as _i8;
 import 'package:flutter_inject/injection/injection_injectable.dart' as _i9;
-import 'package:flutter_inject/managers/session_manager.dart' as _i8;
-import 'package:flutter_inject/repositories/auth_repository.dart' as _i7;
+import 'package:flutter_inject/managers/session_manager.dart' as _i6;
+import 'package:flutter_inject/repositories/auth_repository.dart' as _i4;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:shared_preferences/shared_preferences.dart' as _i5;
+import 'package:shared_preferences/shared_preferences.dart' as _i7;
+
+const String _node = 'node';
+const String _firebase = 'firebase';
+const String _test = 'test';
 
 /// ignore_for_file: unnecessary_lambdas
 /// ignore_for_file: lines_longer_than_80_chars
@@ -30,19 +34,30 @@ extension GetItInjectableX on _i1.GetIt {
     );
     final registerModule = _$RegisterModule();
     gh.factory<_i3.AuthLocalDatasource>(() => _i3.AuthLocalDatasource());
-    gh.singleton<_i4.Dio>(registerModule.dio);
-    await gh.singletonAsync<_i5.SharedPreferences>(
+    gh.factory<_i4.AuthRepository>(
+      () => _i4.FirebaseAuthRepository(),
+      registerFor: {_firebase},
+    );
+    gh.factory<_i4.AuthRepository>(
+      () => _i4.MockAuthRepository(),
+      registerFor: {_test},
+    );
+    gh.singleton<_i5.Dio>(registerModule.dio);
+    gh.lazySingleton<_i6.SessionManager>(
+        () => _i6.SessionManager(gh<_i4.AuthRepository>()));
+    await gh.singletonAsync<_i7.SharedPreferences>(
       () => registerModule.sharedPreferences,
       preResolve: true,
     );
-    gh.factory<_i6.AuthRemoteDatasource>(
-        () => _i6.AuthRemoteDatasource(gh<_i4.Dio>()));
-    gh.factory<_i7.AuthRepository>(() => _i7.NodeAuthRepository(
-          gh<_i6.AuthRemoteDatasource>(),
-          gh<_i3.AuthLocalDatasource>(),
-        ));
-    gh.singleton<_i8.SessionManager>(
-        _i8.SessionManager(gh<_i7.AuthRepository>()));
+    gh.factory<_i8.AuthRemoteDatasource>(
+        () => _i8.AuthRemoteDatasource(gh<_i5.Dio>()));
+    gh.factory<_i4.AuthRepository>(
+      () => _i4.NodeAuthRepository(
+        gh<_i8.AuthRemoteDatasource>(),
+        gh<_i3.AuthLocalDatasource>(),
+      ),
+      registerFor: {_node},
+    );
     return this;
   }
 }

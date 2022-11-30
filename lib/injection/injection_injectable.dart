@@ -7,8 +7,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 final getIt = GetIt.instance;
 
+const node = Environment('node');
+const firebase = Environment('firebase');
+const test = Environment('test');
+
 @InjectableInit()
-Future<void> configureDependencies() => getIt.init();
+Future<void> configureDependencies() => getIt.init(
+      environment: 'node',
+      // environment: 'firebase',
+      // environment: 'test',
+    );
 
 @module
 abstract class RegisterModule {

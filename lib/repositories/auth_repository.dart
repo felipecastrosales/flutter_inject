@@ -1,13 +1,15 @@
+import 'package:flutter_inject/injection/injection_injectable.dart';
+import 'package:injectable/injectable.dart';
+
 import 'package:flutter_inject/datasources/auth_local_datasource.dart';
 import 'package:flutter_inject/datasources/auth_remote_datasource.dart';
 import 'package:flutter_inject/models/user.dart';
-import 'package:injectable/injectable.dart';
 
 abstract class AuthRepository {
   User? getCurrentUser();
 }
 
-@Injectable(as: AuthRepository)
+@Injectable(as: AuthRepository, env: ['node'])
 class NodeAuthRepository implements AuthRepository {
   NodeAuthRepository(this._remoteDatasource, this._localDatasource);
 
@@ -24,9 +26,19 @@ class NodeAuthRepository implements AuthRepository {
   }
 }
 
+@Injectable(as: AuthRepository, env: ['firebase'])
 class FirebaseAuthRepository implements AuthRepository {
   @override
   User? getCurrentUser() {
     return User('Felipe Sales | Firebase');
+  }
+}
+
+@firebase
+@Injectable(as: AuthRepository, env: ['test'])
+class MockAuthRepository implements AuthRepository {
+  @override
+  User? getCurrentUser() {
+    return User('Felipe Sales | Mock');
   }
 }

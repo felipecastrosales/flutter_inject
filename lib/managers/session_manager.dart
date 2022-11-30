@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:flutter_inject/models/user.dart';
 import 'package:flutter_inject/repositories/auth_repository.dart';
 
-@singleton
+@lazySingleton
 class SessionManager {
   SessionManager(this._authRepository) {
     debugPrint('SessionManager created');

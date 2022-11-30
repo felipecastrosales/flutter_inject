@@ -5,6 +5,7 @@ import 'injection/injection_injectable.dart';
 import 'pages/login_page.dart';
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await configureDependencies();
   runApp(const MyApp());
 }
