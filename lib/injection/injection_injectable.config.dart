@@ -44,7 +44,9 @@ extension GetItInjectableX on _i1.GetIt {
     );
     gh.singleton<_i5.Dio>(registerModule.dio);
     gh.lazySingleton<_i6.SessionManager>(
-        () => _i6.SessionManager(gh<_i4.AuthRepository>()));
+      () => _i6.SessionManager(gh<_i4.AuthRepository>()),
+      dispose: (i) => i.dispose(),
+    );
     await gh.singletonAsync<_i7.SharedPreferences>(
       () => registerModule.sharedPreferences,
       preResolve: true,

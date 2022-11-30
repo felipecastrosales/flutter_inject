@@ -19,4 +19,9 @@ class SessionManager {
   void _getCurrentUser() {
     user = _authRepository.getCurrentUser();
   }
+
+  @disposeMethod
+  void dispose() {
+    debugPrint('SessionManager disposed');
+  }
 }
