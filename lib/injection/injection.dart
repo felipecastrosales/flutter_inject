@@ -27,14 +27,27 @@ void configureDependencies() {
   // getIt.registerSingleton(LoginManager(
   //   AuthRepository(AuthRemoteDatasource(Dio()), AuthLocalDatasource()),
   // ));
-  getIt.registerSingleton((() => Dio()));
-  getIt.registerFactory((() => AuthRemoteDatasource(getIt())));
-  getIt.registerFactory((() => AuthLocalDatasource()));
-  getIt.registerFactory(
-    () => AuthRepository(getIt(), getIt()),
-  ); // getIt<AuthRemoteDatasource>(), getIt<AuthLocalDatasource>(),
 
   // Add dependencies in order!
+
+  // var useFirebase = false;
+
+  getIt.registerSingleton(Dio());
+  getIt.registerFactory((() => AuthRemoteDatasource(getIt())));
+  getIt.registerFactory((() => AuthLocalDatasource()));
+  getIt.registerFactory<AuthRepository>(
+    () => NodeAuthRepository(getIt(), getIt()),
+  ); // getIt<AuthRemoteDatasource>(), getIt<AuthLocalDatasource>(),
+
+  // if (useFirebase) {
+  //   getIt.registerFactory<AuthRepository>(
+  //     () => FirebaseAuthRepository(),
+  //   );
+  // } else {
+  //   getIt.registerFactory<AuthRepository>(
+  //     () => NodeAuthRepository(getIt(), getIt()),
+  //   );
+  // }
 
   getIt.registerSingleton(SessionManager(getIt()));
   getIt.registerSingleton(LoginManager(getIt()));
@@ -43,6 +56,6 @@ void configureDependencies() {
 }
 
 class LoginManager {
-  LoginManager(this._authRepository);
-  final AuthRepository _authRepository;
+  LoginManager(this.authRepository);
+  final AuthRepository authRepository;
 }
