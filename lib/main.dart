@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'injection/injection.dart';
+import 'injection/injection_get_it.dart';
 import 'pages/login_page.dart';
 
 void main() {

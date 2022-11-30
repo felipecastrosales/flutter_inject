@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_inject/injection/injection.dart';
+import 'package:flutter_inject/injection/injection_get_it.dart';
 import 'package:flutter_inject/managers/session_manager.dart';
 
 class HomePage extends StatefulWidget {
