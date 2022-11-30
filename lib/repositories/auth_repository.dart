@@ -3,13 +3,15 @@ import 'package:flutter_inject/datasources/auth_remote_datasource.dart';
 import 'package:flutter_inject/models/user.dart';
 
 class AuthRepository {
-  final AuthRemoteDatasource remoteDatasource = AuthRemoteDatasource();
-  final AuthLocalDatasource localDatasource = AuthLocalDatasource();
+  AuthRepository(this._remoteDatasource, this._localDatasource);
+
+  final AuthRemoteDatasource _remoteDatasource;
+  final AuthLocalDatasource _localDatasource;
 
   User? getCurrentUser() {
-    User? user = localDatasource.getCurrentUser();
+    User? user = _localDatasource.getCurrentUser();
     if (user == null) {
-      return remoteDatasource.getCurrentUser();
+      return _remoteDatasource.getCurrentUser();
     }
     return user;
   }

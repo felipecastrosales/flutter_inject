@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_inject/models/user.dart';
 
 class AuthRemoteDatasource {
-  final Dio dio = Dio();
+  AuthRemoteDatasource(this.dio);
+  final Dio dio;
 
   User? getCurrentUser() {
     // call dio
