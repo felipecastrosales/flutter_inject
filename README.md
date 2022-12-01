@@ -1,16 +1,27 @@
-# flutter_inject
+# Dependency Injection 
 
-A new Flutter project.
+> ### Learn about [`get_it`](https://pub.dev/packages/get_it) and [`injectable`](https://pub.dev/packages/injectable) on [startto.dev](https://www.startto.dev/).
 
-## Getting Started
+--- 
 
-This project is a starting point for a Flutter application.
+I learn about: 
+- [x] Get It Usage 
+  - [x] Introduction to GetIt
+  - [x] LazySingleton Register
+  - [x] Factory Register
+- [x] Dependency Injection
+  - [x] Creation of Demo Architecture
+  - [x] Applying the Dependency Injection
+  - [x] Dependency Inversion Principle
+- [x] Injectable Usage
+  - [x] Third and async classes
+  - [x] Environment Configurations
+  - [x] Singletons and LazySingletons dispose
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+   <div align="center">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+   [![Linkedin Badge](https://img.shields.io/badge/-Felipe%20Sales-292929?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/felipecastrosales/)](https://www.linkedin.com/in/felipecastrosales/)
+
+   </div>
