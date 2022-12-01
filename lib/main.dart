@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
-void main() {
+// import 'injection/injection_get_it.dart';
+import 'injection/injection_injectable.dart';
+import 'pages/login_page.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(const MyApp());
 }
 
@@ -10,7 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Inject',
-      home: Container(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const LoginPage(),
     );
   }
 }
