@@ -26,6 +26,7 @@ abstract class RegisterModule {
   // @preResolve is for async dependencies, and init on app start
   // but this await the init and put more time to start the app (in some cases)
   // if not use @preResolve, we can use putAsync and init on constructor
+  // ignore: invalid_annotation_target
   @preResolve
   @singleton
   Future<SharedPreferences> get sharedPreferences =>
