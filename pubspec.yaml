@@ -1,26 +1,25 @@
 name: flutter_inject
-description: A new Flutter project.
+description: Flutter Injecion Examples
 publish_to: 'none'
-version: 1.0.0+1
+version: 2.0.0+1
 
 environment:
-  sdk: '>=2.18.4 <3.0.0'
+  sdk: '>=3.4.0 <4.0.0'
 
 dependencies:
-  cupertino_icons: ^1.0.2
-  dio: ^4.0.6
+  dio: ^5.5.0
   flutter:
     sdk: flutter
-  get_it: ^7.2.0
-  injectable: ^2.0.1
-  shared_preferences: ^2.0.15
+  get_it: ^7.7.0
+  injectable: ^2.4.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
-  build_runner: ^2.3.2
-  flutter_lints: ^2.0.0
+  build_runner: ^2.4.11
+  flutter_lints: ^4.0.0
   flutter_test:
     sdk: flutter
-  injectable_generator: ^2.0.1
+  injectable_generator: ^2.6.1
 
 flutter:
   uses-material-design: true
